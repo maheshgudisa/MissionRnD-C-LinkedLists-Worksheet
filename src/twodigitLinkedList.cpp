@@ -20,7 +20,19 @@ struct node {
 	int digit2;
 	struct node *next;
 };
-
+int pow(struct node *a){
+	int temp = (a->digit1) * 10 + a->digit2;
+	return temp;
+}
 int convert_sll_2digit_to_int(struct node *head){
-	return 0;
+	struct node *curr = head;
+	int num1 = 0;
+	if (head == NULL)return 0;
+	while (curr != NULL){
+		num1 = (num1 + pow(curr)) * 100;
+		curr = curr->next;
+	}
+	num1 = num1 / 100;
+	free(curr);
+	return num1;
 }
